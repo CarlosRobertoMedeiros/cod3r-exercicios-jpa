@@ -53,6 +53,11 @@ public class DAO<E> {
 				.fecharTransacao();
 	}
 	
+	
+	public E obterPorID(Object id) {
+		return em.find(classe ,  id);
+	}
+	
 	public List<E> obterTodos(){
 		return this.obterTodos(10, 0);
 	}
