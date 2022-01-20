@@ -1,0 +1,50 @@
+package modelo.heranca;
+
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TB_ALUNO")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+// @Inheritance(strategy = InheritanceType.JOINED) //Apenas modificou a estratégia criando uma nova tabela
+@DiscriminatorColumn(name = "tipo",length = 2, discriminatorType = DiscriminatorType.STRING) 
+@DiscriminatorValue("AL")
+public class Aluno {
+
+	@Id
+	private Long matricula;
+
+	private String nome;
+
+	public Aluno() {
+
+	}
+
+	public Aluno(Long matricula, String nome) {
+		this.matricula = matricula;
+		this.nome = nome;
+	}
+
+	public Long getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Long matricula) {
+		this.matricula = matricula;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+}

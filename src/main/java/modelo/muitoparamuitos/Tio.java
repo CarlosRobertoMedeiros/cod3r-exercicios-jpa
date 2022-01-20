@@ -1,0 +1,64 @@
+package modelo.muitoparamuitos;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TB_TIO")
+public class Tio {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	private String nome;
+
+	@ManyToMany()
+	List<Sobrinho> sobrinhos = new ArrayList<>();
+
+	public Tio() {
+
+	}
+
+	public Tio(String nome ) {
+		this.nome = nome;
+	}
+	
+	
+	public Tio(String nome, List<Sobrinho> sobrinhos) {
+		this.nome = nome;
+		this.sobrinhos = sobrinhos;
+	}
+
+	public List<Sobrinho> getSobrinhos() {
+		return sobrinhos;
+	}
+
+	public void setSobrinhos(List<Sobrinho> sobrinhos) {
+		this.sobrinhos = sobrinhos;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+}
